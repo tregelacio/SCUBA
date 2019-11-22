@@ -1,2 +1,1 @@
-# SCUBA
-ICS414 SCUBA Project
+Repo for Language Pals application source code

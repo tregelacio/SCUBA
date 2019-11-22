@@ -1,0 +1,12 @@
+.languagepals-landing-background{
+  background: url('/images/underwater.jpg') no-repeat center center fixed;
+  background-size: cover;
+  padding-bottom: 500px;
+}
+
+.h1{
+  font-family: "Lucida Console";
+  color: white
+}
+
+
