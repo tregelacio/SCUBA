@@ -26,7 +26,7 @@ class AddDive extends React.Component {
     if (error) {
       Bert.alert({ type: 'danger', message: `Add failed: ${error.message}` });
     } else {
-      Bert.alert({ type: 'success', message: 'Add succeeded' });
+      Bert.alert({ type: 'success', message: 'Dive Created' });
       this.formRef.reset();
     }
   }
@@ -55,6 +55,7 @@ class AddDive extends React.Component {
                 <NumField label='Dive Depth (meters)' name='diveDepth'/>
                 <NumField label='Dive Time (minutes)' name='diveTime'/>
                 <NumField label='Starting Oxygen Percent' name='oxygenPercent'/>
+				<SubmitField value='Create'/>
                 <ErrorsField/>
                 <HiddenField name='owner' value='fakeuser@foo.com'/>
                 <HiddenField name='createdAt' value={Date.now()}/>
