@@ -45,13 +45,16 @@ class AddDive extends React.Component {
         <Grid container centered>
           <Grid.Column>
             <Header as="h2" textAlign="center">Create Dive</Header>
+			<Header as="h3" textAlign="center">
+			  Input your dive plan values.
+			</Header>
             <AutoForm ref={(ref) => {
               this.formRef = ref;
             }} schema={DiveSchema} onSubmit={this.submit}>
               <Segment>
                 <NumField label='Dive Depth (meters)' name='diveDepth'/>
                 <NumField label='Dive Time (minutes)' name='diveTime'/>
-                <NumField label='Oxygen Percent' name='oxygenPercent'/>
+                <NumField label='Starting Oxygen Percent' name='oxygenPercent'/>
                 <ErrorsField/>
                 <HiddenField name='owner' value='fakeuser@foo.com'/>
                 <HiddenField name='createdAt' value={Date.now()}/>
