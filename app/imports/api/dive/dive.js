@@ -13,6 +13,8 @@ const DiveSchema = new SimpleSchema({
   diveTime: Number,
   diveDepth: Number,
   oxygenPercent: Number,
+  oxygenSize: Number,
+  sac: Number,
  
 }, { tracker: Tracker });
 

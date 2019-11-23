@@ -33,10 +33,10 @@ class AddDive extends React.Component {
 
   /** On submit, insert the data. */
   submit(data) {
-    const { diveTime, diveDepth, oxygenPercent, createdAt } = data;
+    const { diveTime, diveDepth, oxygenPercent, oxygenSize, sac, createdAt } = data;
     const owner = Meteor.user().username;
     const members = [owner];
-    Dives.insert({ owner, createdAt, diveTime, diveDepth, oxygenPercent }, this.insertCallback);
+    Dives.insert({ owner, createdAt, diveTime, diveDepth, oxygenPercent, oxygenSize, sac }, this.insertCallback);
   }
 
   /** Render the form. Use Uniforms: https://github.com/vazco/uniforms */
@@ -54,7 +54,9 @@ class AddDive extends React.Component {
               <Segment>
                 <NumField label='Dive Depth (meters)' name='diveDepth'/>
                 <NumField label='Dive Time (minutes)' name='diveTime'/>
+				<NumField label='Oxygen Tank Size (bar)' name='oxygenSize'/>
                 <NumField label='Starting Oxygen Percent' name='oxygenPercent'/>
+				<NumField label='SAC (Surface Air Consumption) Rate (bar/minute)' name='sac'/>
 				<SubmitField value='Create'/>
                 <ErrorsField/>
                 <HiddenField name='owner' value='fakeuser@foo.com'/>
