@@ -17,6 +17,10 @@ class Landing extends React.Component {
               WARNING: This is a prototype and should not be used to plan real life dives.
             </Header>
 			<img src={'/images/diver.png'} width={'350px'}></img>
+			<Header as={'h5'} inverted>
+			  Team Waimea Bay: 
+			  Tre Gelacio, Nathan Onaka
+			</Header>
           </Grid.Column>
 
         </Grid>
