@@ -1,7 +1,6 @@
-import SimpleSchema from 'simpl-schema';
 import { Mongo } from 'meteor/mongo';
+import SimpleSchema from 'simpl-schema';
 import { Tracker } from 'meteor/tracker';
-import { languageList } from '../languageList.js';
 
 /** Create a Meteor collection. */
 const Dives = new Mongo.Collection('Dives');
@@ -15,7 +14,6 @@ const DiveSchema = new SimpleSchema({
   oxygenPercent: Number,
   oxygenSize: Number,
   sac: Number,
- 
 }, { tracker: Tracker });
 
 /** Attach this schema to the collection. */

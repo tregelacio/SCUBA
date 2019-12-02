@@ -32,7 +32,7 @@ class App extends React.Component {
               <Route path="/edit/:_id" component={EditProfile}/>
 			  <Route path="/adddive" component={AddDive}/>
               <Route path="/signout" component={Signout}/>
-			  <Route path="/YourDive" component={YourDive}/>
+			  <Route path="/yourdive" component={YourDive}/>
               <Route component={NotFound}/>
             </Switch>
           </div>
