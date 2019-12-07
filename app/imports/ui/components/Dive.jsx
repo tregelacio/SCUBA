@@ -12,8 +12,8 @@ class Dive extends React.Component {
 	var pressure = (this.props.dive.diveDepth * 1025 * 9.8)/(101325) +1;
 	
 	//Formula for oxygen percent found at: https://www.liveabout.com/air-consumption-rates-for-scuba-diving-2962942
-	var oxygenPercent = (this.props.dive.oxygenSize)/(this.props.dive.sac * pressure);
-	var roundedOxygenPercent = oxygenPercent.toFixed(2);
+	var oxygenRemaining = (this.props.dive.oxygenSize * (this.props.dive.oxygenPercent * .01))/(this.props.dive.sac * pressure);
+	var roundedOxygenPercent = oxygenRemaining.toFixed(2);
 	
 	
 	//Dive Table groups found at: https://www.instructables.com/id/Reading-Dive-Tables/
@@ -30,7 +30,7 @@ class Dive extends React.Component {
 	
 	
     return (
-        <Card centered>
+        <Card centered color='blue'>
           <Card.Content>
             <Card.Header>
 				<Header>Dive Time: {this.props.dive.diveTime} minutes  

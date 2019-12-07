@@ -34,6 +34,8 @@ class YourDives extends React.Component {
           <Card.Group>
             {this.props.dives.map((dive, index) => <Dive key={index} dive={dive}/>)}
           </Card.Group>
+		  
+		  <Header as="h3" textAlign="center"> WARNING: This is a prototype and should not be used to plan real life dives.</Header>
 
         </Container>
     );

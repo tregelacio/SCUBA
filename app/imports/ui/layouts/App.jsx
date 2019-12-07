@@ -6,9 +6,6 @@ import { Roles } from 'meteor/alanning:roles';
 import { HashRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 import NavBar from '../components/NavBar';
 import Landing from '../pages/Landing';
-import CreateProfile from '../pages/CreateProfile';
-import EditProfile from '../pages/EditProfile';
-import DeactivateProfile from '../pages/DeactivateProfile';
 import AddDive from '../pages/AddDive';
 import NotFound from '../pages/NotFound';
 import Signin from '../pages/Signin';
@@ -27,9 +24,6 @@ class App extends React.Component {
               <Route exact path="/" component={Landing}/>
               <Route path="/signin" component={Signin}/>
               <Route path="/signup" component={Signup}/>
-              <Route path="/createprofile/:_id" component={CreateProfile}/>
-              <Route path="/deactivateprofile/:_id" component={DeactivateProfile}/>
-              <Route path="/edit/:_id" component={EditProfile}/>
 			  <Route path="/adddive" component={AddDive}/>
               <Route path="/signout" component={Signout}/>
 			  <Route path="/yourdive" component={YourDive}/>
