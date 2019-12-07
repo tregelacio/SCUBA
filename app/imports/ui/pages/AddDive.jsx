@@ -54,7 +54,7 @@ class AddDive extends React.Component {
                 <NumField label='Dive Depth (meters)' name='diveDepth'/>
                 <NumField label='Dive Time (minutes)' name='diveTime'/>
 				<NumField label='Oxygen Tank Size (bar)' name='oxygenSize'/>
-                <NumField label='Starting Oxygen Percent' name='oxygenPercent'/>
+                <NumField label='Current Oxygen Percent' name='oxygenPercent'/>
 				<NumField label='SAC (Surface Air Consumption) Rate (bar/minute)' name='sac'/>
 				<SubmitField value='Create'/>
                 <ErrorsField/>

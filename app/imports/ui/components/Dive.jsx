@@ -4,27 +4,50 @@ import PropTypes from 'prop-types';
 import { withRouter, Link } from 'react-router-dom';
 import { _ } from 'meteor/underscore';
 
-/** Renders a single card in the List Contact table. See pages/ListContact.jsx. */
+
 class Dive extends React.Component {
   render() {
-    /*
-    const ownerProfile = this.props.memberProfiles.find(profile => (profile.owner === this.props.dive.owner));
-    const members = _.difference(this.props.memberProfiles, [ownerProfile]);
-    */
+	
+	//Pressure calculated by using density of seawater at 1025 kg/m^3 * depth(m) * gravity(m/s^2) = current pressure in Pascal's.  Convert to atm's and then add +1 atm for for sealevel.
+	var pressure = (this.props.dive.diveDepth * 1025 * 9.8)/(101325) +1;
+	
+	//Formula for oxygen percent found at: https://www.liveabout.com/air-consumption-rates-for-scuba-diving-2962942
+	var oxygenPercent = (this.props.dive.oxygenSize)/(this.props.dive.sac * pressure);
+	var roundedOxygenPercent = oxygenPercent.toFixed(2);
+	
+	
+	//Dive Table groups found at: https://www.instructables.com/id/Reading-Dive-Tables/
+	var safetyStop = "No Safety Stop Required";
+	if(this.props.dive.diveDepth > 100)
+		safetyStop = "Safety Stop REQUIRED";
+	if((this.props.dive.diveDepth > 50 && this.props.dive.diveTime > 60) ||
+	(this.props.dive.diveDepth > 60 && this.props.dive.diveTime > 50) ||
+	(this.props.dive.diveDepth > 70 && this.props.dive.diveTime > 35) ||
+	(this.props.dive.diveDepth > 80 && this.props.dive.diveTime > 25) ||
+	(this.props.dive.diveDepth > 90 && this.props.dive.diveTime > 20))
+		safetyStop = "Safety Stop REQUIRED";
+		
+	
+	
     return (
         <Card centered>
           <Card.Content>
             <Card.Header>
-                {this.props.dive.diveTime} {this.props.dive.diveDepth}
+				<Header>Dive Time: {this.props.dive.diveTime} minutes  
+				Dive Depth: {this.props.dive.diveDepth} meters</Header>
             </Card.Header>
             <Card.Meta>
-                {this.props.dive.oxygenPercent}
+                Your Dive Information
             </Card.Meta>
-            <Card.Description>
-                {this.props.dive.oxygenSize}
+            <Card.Description><Icon name="circle"/>
+                Oxygen Tank Size: {this.props.dive.oxygenSize} bars
             </Card.Description>
-            <Card.Description>
-                {this.props.dive.sac}
+			<Card.Description><Icon name="hourglass half"/>
+                Remaining Oxygen Percent: {roundedOxygenPercent}%
+            </Card.Description>
+			<Divider horizontal><Icon name="heartbeat"/>Safety</Divider>
+			<Card.Description><Icon name="hand paper"/>
+                {safetyStop}
             </Card.Description>
         </Card.Content>
 

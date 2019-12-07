@@ -26,7 +26,7 @@ class NavBar extends React.Component {
                 Create Dive
               </Menu.Item>,
               <Menu.Item as={NavLink} activeClassName="active" exact to="/YourDive" key='YourDive'>
-                Your Dive
+                Your Dives
               </Menu.Item>]
           ) : ''}
 		  

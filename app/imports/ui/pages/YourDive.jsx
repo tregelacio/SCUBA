@@ -29,8 +29,7 @@ class YourDives extends React.Component {
             }
  */
         <Container>
-            <h1 className="ui header">First header</h1>
-          <Header as="h2" textAlign="center">Your Dives</Header>
+          <Header as="h1" textAlign="center">Your Dives</Header>
 
           <Card.Group>
             {this.props.dives.map((dive, index) => <Dive key={index} dive={dive}/>)}
