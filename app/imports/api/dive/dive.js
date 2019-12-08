@@ -14,6 +14,7 @@ const DiveSchema = new SimpleSchema({
   oxygenPercent: Number,
   oxygenSize: Number,
   sac: Number,
+  surfaceTime: Number,
 }, { tracker: Tracker });
 
 /** Attach this schema to the collection. */

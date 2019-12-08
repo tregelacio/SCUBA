@@ -16,7 +16,10 @@ class Dive extends React.Component {
 	var roundedOxygenPercent = oxygenRemaining.toFixed(2);
 	
 	
-	//Dive Table groups found at: https://www.instructables.com/id/Reading-Dive-Tables/
+	//Dive Table groups found at: https://www.naui.org/resources/dive-tables-review/
+	//Also has nitrogen pressure group tables for repetitive diving
+	
+	//Safety Stops
 	var safetyStop = "No Safety Stop Required";
 	if(this.props.dive.diveDepth > 100)
 		safetyStop = "Safety Stop REQUIRED";
@@ -27,7 +30,87 @@ class Dive extends React.Component {
 	(this.props.dive.diveDepth > 90 && this.props.dive.diveTime > 20))
 		safetyStop = "Safety Stop REQUIRED";
 		
-	
+	//Surface Interval (hard coded dive table lol)
+	var nextDiveInfo = " ";
+	if(this.props.dive.surfaceTime < 10)
+		nextDiveInfo = "You need a minimum surface time of 10 minutes in order to dive again."
+	//C
+	if((this.props.dive.diveDepth < 40 && this.props.dive.diveTime < 30 && this.props.dive.surfaceTime > 10))
+		nextDiveInfo = "Using this dive information, you may do another dive between 40 meters for 100 minutes and up to a max depth of 120 meters for 1 minute.";
+	if((this.props.dive.diveDepth < 40 && this.props.dive.diveTime < 30 && this.props.dive.surfaceTime > 60))
+		nextDiveInfo = "Using this dive information, you may do another dive between 40 meters for 120 minutes and up to a max depth of 120 meters for 5 minutes.";
+	if((this.props.dive.diveDepth < 60 && this.props.dive.diveTime < 20 && this.props.dive.surfaceTime > 10))
+		nextDiveInfo = "Using this dive information, you may do another dive between 40 meters for 120 minutes and up to a max depth of 120 meters for 5 minutes.";
+	if((this.props.dive.diveDepth < 90 && this.props.dive.diveTime < 10 && this.props.dive.surfaceTime > 10))
+		nextDiveInfo = "Using this dive information, you may do another dive between 40 meters for 120 minutes and up to a max depth of 120 meters for 5 minutes.";
+	if((this.props.dive.diveDepth < 150 && this.props.dive.diveTime < 5 && this.props.dive.surfaceTime > 10))
+		nextDiveInfo = "Using this dive information, you may do another dive between 40 meters for 120 minutes and up to a max depth of 120 meters for 5 minutes.";
+	//E
+	if((this.props.dive.diveDepth < 40 && this.props.dive.diveTime < 40 && this.props.dive.surfaceTime > 10))
+		nextDiveInfo = "Using this dive information, you may do another dive between 40 meters for 80 minutes and up to a max depth of 100 meters for 2 minutes.";
+	if((this.props.dive.diveDepth < 40 && this.props.dive.diveTime < 40 && this.props.dive.surfaceTime > 60))
+		nextDiveInfo = "Using this dive information, you may do another dive between 40 meters for 90 minutes and up to a max depth of 110 meters for 2 minutes.";
+	if((this.props.dive.diveDepth < 40 && this.props.dive.diveTime < 40 && this.props.dive.surfaceTime > 120))
+		nextDiveInfo = "Using this dive information, you may do another dive between 40 meters for 120 minutes and up to a max depth of 130 meters for 2 minutes.";
+	if((this.props.dive.diveDepth < 60 && this.props.dive.diveTime < 30 && this.props.dive.surfaceTime > 10))
+		nextDiveInfo = "Using this dive information, you may do another dive between 40 meters for 80 minutes and up to a max depth of 100 meters for 2 minutes.";
+	if((this.props.dive.diveDepth < 60 && this.props.dive.diveTime < 30 && this.props.dive.surfaceTime > 60))
+		nextDiveInfo = "Using this dive information, you may do another dive between 40 meters for 90 minutes and up to a max depth of 110 meters for 2 minutes.";
+	if((this.props.dive.diveDepth < 60 && this.props.dive.diveTime < 30 && this.props.dive.surfaceTime > 120))
+		nextDiveInfo = "Using this dive information, you may do another dive between 40 meters for 120 minutes and up to a max depth of 130 meters for 2 minutes.";
+	if((this.props.dive.diveDepth < 100 && this.props.dive.diveTime < 20 && this.props.dive.surfaceTime > 10))
+		nextDiveInfo = "Using this dive information, you may do another dive between 40 meters for 80 minutes and up to a max depth of 100 meters for 2 minutes.";
+	if((this.props.dive.diveDepth < 100 && this.props.dive.diveTime < 20 && this.props.dive.surfaceTime > 60))
+		nextDiveInfo = "Using this dive information, you may do another dive between 40 meters for 90 minutes and up to a max depth of 110 meters for 2 minutes.";
+	if((this.props.dive.diveDepth < 100 && this.props.dive.diveTime < 20 && this.props.dive.surfaceTime > 120))
+		nextDiveInfo = "Using this dive information, you may do another dive between 40 meters for 120 minutes and up to a max depth of 130 meters for 2 minutes.";
+	//G
+	if((this.props.dive.diveDepth < 40 && this.props.dive.diveTime < 80 && this.props.dive.surfaceTime > 10))
+		nextDiveInfo = "Using this dive information, you may do another dive between 40 meters for 60 minutes and up to a max depth of 70 meters for 3 minutes.";
+	if((this.props.dive.diveDepth < 40 && this.props.dive.diveTime < 80 && this.props.dive.surfaceTime > 60))
+		nextDiveInfo = "Using this dive information, you may do another dive between 40 meters for 80 minutes and up to a max depth of 100 meters for 2 minutes.";
+	if((this.props.dive.diveDepth < 40 && this.props.dive.diveTime < 80 && this.props.dive.surfaceTime > 300))
+		nextDiveInfo = "Using this dive information, you may do another dive between 40 meters for 120 minutes and up to a max depth of 130 meters for 2 minutes.";
+	if((this.props.dive.diveDepth < 60 && this.props.dive.diveTime < 45 && this.props.dive.surfaceTime > 10))
+		nextDiveInfo = "Using this dive information, you may do another dive between 40 meters for 60 minutes and up to a max depth of 70 meters for 3 minutes.";
+	if((this.props.dive.diveDepth < 60 && this.props.dive.diveTime < 45 && this.props.dive.surfaceTime > 60))
+		nextDiveInfo = "Using this dive information, you may do another dive between 40 meters for 80 minutes and up to a max depth of 100 meters for 2 minutes.";
+	if((this.props.dive.diveDepth < 60 && this.props.dive.diveTime < 45 && this.props.dive.surfaceTime > 300))
+		nextDiveInfo = "Using this dive information, you may do another dive between 40 meters for 120 minutes and up to a max depth of 130 meters for 2 minutes.";
+	if((this.props.dive.diveDepth < 90 && this.props.dive.diveTime < 30 && this.props.dive.surfaceTime > 10))
+		nextDiveInfo = "Using this dive information, you may do another dive between 40 meters for 60 minutes and up to a max depth of 70 meters for 3 minutes.";
+	if((this.props.dive.diveDepth < 90 && this.props.dive.diveTime < 30 && this.props.dive.surfaceTime > 60))
+		nextDiveInfo = "Using this dive information, you may do another dive between 40 meters for 80 minutes and up to a max depth of 100 meters for 2 minutes.";
+	if((this.props.dive.diveDepth < 90 && this.props.dive.diveTime < 30 && this.props.dive.surfaceTime > 300))
+		nextDiveInfo = "Using this dive information, you may do another dive between 40 meters for 120 minutes and up to a max depth of 130 meters for 2 minutes.";
+	//H
+	if((this.props.dive.diveDepth < 40 && this.props.dive.diveTime < 80 && this.props.dive.surfaceTime > 10))
+		nextDiveInfo = "Using this dive information, you may do another dive between 40 meters for 60 minutes and up to a max depth of 70 meters for 3 minutes.";
+	if((this.props.dive.diveDepth < 40 && this.props.dive.diveTime < 80 && this.props.dive.surfaceTime > 60))
+		nextDiveInfo = "Using this dive information, you may do another dive between 40 meters for 70 minutes and up to a max depth of 90 meters for 7 minutes.";
+	if((this.props.dive.diveDepth < 40 && this.props.dive.diveTime < 80 && this.props.dive.surfaceTime > 120))
+		nextDiveInfo = "Using this dive information, you may do another dive between 40 meters for 90 minutes and up to a max depth of 110 meters for 2 minutes.";
+	if((this.props.dive.diveDepth < 40 && this.props.dive.diveTime < 80 && this.props.dive.surfaceTime > 300))
+		nextDiveInfo = "Using this dive information, you may do another dive between 50 meters for 115 and up to a max depth of 120 meters for 4 minutes.";
+	if((this.props.dive.diveDepth < 70 && this.props.dive.diveTime < 40 && this.props.dive.surfaceTime > 10))
+		nextDiveInfo = "Using this dive information, you may do another dive between 40 meters for 60 minutes and up to a max depth of 70 meters for 3 minutes.";
+	if((this.props.dive.diveDepth < 70 && this.props.dive.diveTime < 40 && this.props.dive.surfaceTime > 60))
+		nextDiveInfo = "Using this dive information, you may do another dive between 40 meters for 70 minutes and up to a max depth of 90 meters for 7 minutes.";
+	if((this.props.dive.diveDepth < 70 && this.props.dive.diveTime < 40 && this.props.dive.surfaceTime > 120))
+		nextDiveInfo = "Using this dive information, you may do another dive between 40 meters for 90 minutes and up to a max depth of 110 meters for 2 minutes.";
+	if((this.props.dive.diveDepth < 70 && this.props.dive.diveTime < 40 && this.props.dive.surfaceTime > 300))
+		nextDiveInfo = "Using this dive information, you may do another dive between 50 meters for 115 minutes and up to a max depth of 120 meters for 4 minutes.";
+	//I
+	if((this.props.dive.diveDepth < 40 && this.props.dive.diveTime < 100 && this.props.dive.surfaceTime > 10))
+		nextDiveInfo = "Using this dive information, you may do another dive up to a max depth of 40 meters for 30 minutes.";
+	if((this.props.dive.diveDepth < 40 && this.props.dive.diveTime < 100 && this.props.dive.surfaceTime > 60))
+		nextDiveInfo = "Using this dive information, you may do another dive between 40 meters for 60 minutes and up to a max depth of 70 meters for 3 minutes.";
+	if((this.props.dive.diveDepth < 40 && this.props.dive.diveTime < 100 && this.props.dive.surfaceTime > 120))
+		nextDiveInfo = "Using this dive information, you may do another dive between 40 meters for 80 minutes and up to a max depth of 100 meters for 2 minutes.";
+	if((this.props.dive.diveDepth < 40 && this.props.dive.diveTime < 100 && this.props.dive.surfaceTime > 300))
+		nextDiveInfo = "Using this dive information, you may do another dive between 50 meters for 115 and up to a max depth of 120 meters for 4 minutes.";
+	if((this.props.dive.diveDepth < 40 && this.props.dive.diveTime < 100 && this.props.dive.surfaceTime > 600))
+		nextDiveInfo = "Using this dive information, you may do another dive between 40 meters for 120 minutes and up to a max depth of 130 meters for 2 minutes.";
 	
     return (
         <Card centered color='blue'>
@@ -43,11 +126,17 @@ class Dive extends React.Component {
                 Oxygen Tank Size: {this.props.dive.oxygenSize} bars
             </Card.Description>
 			<Card.Description><Icon name="hourglass half"/>
-                Remaining Oxygen Percent: {roundedOxygenPercent}%
+                Remaining Oxygen Percent: <strong>{roundedOxygenPercent}%</strong>
             </Card.Description>
 			<Divider horizontal><Icon name="heartbeat"/>Safety</Divider>
 			<Card.Description><Icon name="hand paper"/>
                 {safetyStop}
+            </Card.Description>
+			<Card.Description><Icon name="clock"/>
+                Surface Interval Time: {this.props.dive.surfaceTime}
+            </Card.Description>
+			<Card.Description>
+				<i>{nextDiveInfo}</i>
             </Card.Description>
         </Card.Content>
 

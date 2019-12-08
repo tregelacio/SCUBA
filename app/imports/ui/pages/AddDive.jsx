@@ -33,9 +33,9 @@ class AddDive extends React.Component {
 
   /** On submit, insert the data. */
   submit(data) {
-    const { diveTime, diveDepth, oxygenPercent, oxygenSize, sac, createdAt } = data;
+    const { diveTime, diveDepth, oxygenPercent, oxygenSize, sac, surfaceTime, createdAt } = data;
     const owner = Meteor.user().username;
-    Dives.insert({ owner, createdAt, diveTime, diveDepth, oxygenPercent, oxygenSize, sac }, this.insertCallback);
+    Dives.insert({ owner, createdAt, diveTime, diveDepth, oxygenPercent, oxygenSize, sac, surfaceTime }, this.insertCallback);
 }
 
   /** Render the form. Use Uniforms: https://github.com/vazco/uniforms */
@@ -51,11 +51,12 @@ class AddDive extends React.Component {
               this.formRef = ref;
             }} schema={DiveSchema} onSubmit={this.submit}>
               <Segment>
-                <NumField label='Dive Depth (meters)' name='diveDepth'/>
-                <NumField label='Dive Time (minutes)' name='diveTime'/>
-				<NumField label='Oxygen Tank Size (bar)' name='oxygenSize'/>
-                <NumField label='Current Oxygen Percent' name='oxygenPercent'/>
-				<NumField label='SAC (Surface Air Consumption) Rate (bar/minute)' name='sac'/>
+				<NumField label='Dive Depth (meters)' placeholder='0-200' name='diveDepth'/>
+				<NumField label='Dive Time (minutes)' placeholder='0-120'name='diveTime'/>
+				<NumField label='Oxygen Tank Size (bar)' placeholder='Average is 200 bars' name='oxygenSize'/>
+                <NumField label='Current Oxygen Percent' placeholder='0-100' name='oxygenPercent'/>
+				<NumField label='SAC (Surface Air Consumption) Rate (bar/minute)' placeholder='Average is 1.5 bar/minute' name='sac'/>
+				<NumField label='Planned Surface Time (minutes)' placeholder='Put 0 if not planning to do multiple dives' name='surfaceTime'/>
 				<SubmitField value='Create'/>
                 <ErrorsField/>
                 <HiddenField name='owner' value='fakeuser@foo.com'/>
