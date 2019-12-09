@@ -1,3 +1,3 @@
-const meetingOptions = ['In Person', 'Video Chat', 'Social Media'];
-
-export {meetingOptions};
+// const meetingOptions = ['In Person', 'Video Chat', 'Social Media'];
+//
+// export {meetingOptions};

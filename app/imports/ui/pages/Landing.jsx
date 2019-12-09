@@ -19,7 +19,7 @@ class Landing extends React.Component {
 			<img src={'/images/diver.png'} width={'350px'}></img>
 			<Header as={'h5'} inverted>
 			  Team Waimea Bay: 
-			  Tre Gelacio, Nathan Onaka
+			  Nathan Onaka, Tre Gelacio
 			</Header>
           </Grid.Column>
 
