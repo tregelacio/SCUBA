@@ -1,7 +1,13 @@
-.languagepals-landing-background{
+.dive-landing-background{
   background: url('/images/underwater.jpg') no-repeat center center fixed;
   background-size: cover;
-  padding-bottom: 500px;
+  padding-bottom: 150px;
+}
+
+.dive-create-background{
+	background: url('/images/fish.jpg') no-repeat center center fixed;
+	background-size: cover;
+	padding-bottom: 100px;
 }
 
 .h1{

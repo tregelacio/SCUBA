@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, Image, Header, Divider, Icon, Button } from 'semantic-ui-react';
+import { Card, Image, Header, Divider, Icon, Button, Message } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { withRouter, Link } from 'react-router-dom';
 import { _ } from 'meteor/underscore';
@@ -7,7 +7,6 @@ import { _ } from 'meteor/underscore';
 
 class Dive extends React.Component {
   render() {
-	
 	//Pressure calculated by using density of seawater at 1025 kg/m^3 * depth(m) * gravity(m/s^2) = current pressure in Pascal's.  Convert to atm's and then add +1 atm for for sealevel.
 	var pressure = (this.props.dive.diveDepth * 1025 * 9.8)/(101325) +1;
 	
@@ -114,6 +113,7 @@ class Dive extends React.Component {
 	
     return (
         <Card centered color='blue'>
+		<img src={'/images/scubawater.jpg'} width={'290px'}></img>
           <Card.Content>
             <Card.Header>
 				<Header>Dive Time: {this.props.dive.diveTime} minutes  
@@ -135,8 +135,11 @@ class Dive extends React.Component {
 			<Card.Description><Icon name="clock"/>
                 Surface Interval Time: {this.props.dive.surfaceTime}
             </Card.Description>
-			<Card.Description>
+			<Message>
 				<i>{nextDiveInfo}</i>
+			</Message>
+			<Card.Description><Icon name="adjust"/>
+                You will need to refill your oxygen tank.
             </Card.Description>
         </Card.Content>
 

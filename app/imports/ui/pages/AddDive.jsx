@@ -41,11 +41,12 @@ class AddDive extends React.Component {
   /** Render the form. Use Uniforms: https://github.com/vazco/uniforms */
   render() {
     return (
+	<div className='dive-create-background'>
         <Grid container centered>
           <Grid.Column>
-            <Header as="h2" textAlign="center">Create Dive</Header>
-			<Header as="h3" textAlign="center">
-			  Input your dive plan values.
+            <Header as="h1" textAlign="center">Create Dive</Header>
+			<Header as="h2" textAlign="center">
+			  Input your dive plan data.
 			</Header>
             <AutoForm ref={(ref) => {
               this.formRef = ref;
@@ -65,6 +66,7 @@ class AddDive extends React.Component {
             </AutoForm>
           </Grid.Column>
         </Grid>
+	</div>
     );
   }
 }
